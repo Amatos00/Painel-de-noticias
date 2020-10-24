@@ -1,9 +1,13 @@
 const express = require('express');
+const routes = require('./routes/user-routes');
+const db = require('./database/connection');
 
 const app = express();
 
-app.get('/', (req, res) => {
-    res.send('hello world!');
-})
+app.use(express.json());
+app.use('/', routes);
 
-app.listen(3333);
+
+app.listen(3333, () => { 
+    console.log('servidor conectado!')
+});
